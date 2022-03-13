@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SideBar from "./components/SideBar";
+import Task from "./components/Task";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+  const createTask = (task) => {
+    if(tasks.length > 5){
+      alert("Solo puedes tener 6 Tareas simulataneamente")
+    }else{
+    setTasks([
+      ...tasks, 
+      task
+    ]);
+  }};
+
+  const completeTask = (task) =>{
+    task.completed=true
+    let newArray = [...tasks]
+    setTasks(newArray)
+  }
+
+// Funcion para borrar Task
+  const deleteTask = (id) =>{
+    let newTaskArray = tasks.filter((task)=> task.id !== id)
+    setTasks(newTaskArray)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-container">
+      <div className="stickyBar">
+        <SideBar 
+          createTask={createTask} 
+        />
+      </div>
+      <div className="card-container">
+        {/* Mapping Sobre las Task */}
+        {tasks.map((task) => {
+          return <Task 
+          key={task.id} 
+          task={task}
+          completeTask={completeTask}
+          deleteTask={deleteTask}
+          />;
+        })}
+      </div>
     </div>
   );
 }

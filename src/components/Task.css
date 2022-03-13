@@ -1,0 +1,52 @@
+.card{
+    display: flex;
+    flex-direction: column;
+
+    width: 280px;
+    height: 280px;
+    color: #6986b8;
+
+    margin: 20px;
+
+    background: #EFD3D7;
+    border-radius: 20px;
+}
+
+.card > p {
+    overflow-wrap: break-word;
+    margin: 10px;
+    padding: 5px;
+}
+
+.card > h3, h4{
+    margin: 10px;
+    padding: 5px;
+}
+
+.actionButtons{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.botones{
+    margin: 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 70px;
+    background-color: #EFD3D7;
+}
+
+.completed{
+    display: flex;
+    width:200px;
+    height: 40px;
+    background-color: #77dd77;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+}
