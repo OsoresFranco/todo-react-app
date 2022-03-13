@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import SideBar from "./components/SideBar";
 import Task from "./components/Task";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const createTask = (task) => {
     if(tasks.length > 5){
-      alert("Solo puedes tener 6 Tareas simulataneamente")
+      MySwal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You can only have 6 simultaneous tasks',
+      })
     }else{
     setTasks([
       ...tasks, 
